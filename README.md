@@ -1,79 +1,77 @@
-# PathPilot
+# Jetbot Path Tracking and Control System
 
-PathPilot is an advanced robotics project where a small robot, the JetBot, is guided by an overhead camera. This system leverages OpenCV and Python to analyze the course from above, plan the optimal path, and navigate the JetBot with precision. It combines aerial analysis with autonomous navigation to achieve accurate pathfinding and obstacle avoidance.
+## Overview
 
-## Features
+This Project provides a path tracking and control system for Jetbots using computer vision techniques. It detects paths, tracks objects, and adjusts motor speeds based on visual feedback.
 
-- **Overhead Camera Analysis:** Uses OpenCV to capture and analyze the course.
-- **Path Planning:** Computes the optimal route for the JetBot.
-- **Autonomous Navigation:** JetBot follows the planned path based on real-time data.
+## Key Features
 
-## Setup Instructions
+1. **Path Detection**: Identifies and processes a white line to define a path.
+2. **Object Tracking**: Tracks red and blue dots using OpenCV's CSRT tracker.
+3. **Angle Calculation**: Computes angles between vectors to determine direction.
+4. **Speed Adjustment**: Adjusts motor speeds based on tracking data and angle errors.
+5. **Interactive UI**: Allows manual selection of tracking points.
 
-### Prerequisites
+## Algorithms and Techniques
 
-- **Hardware:**
-  - JetBot
-  - Overhead camera
-  - Computer with Python and Jupyter Notebook installed
-- **Software:**
-  - Python 3.x
-  - OpenCV (`opencv-python`)
-  - Jupyter Notebook
+- **Path Processing**: 
+  - Binary image conversion and thinning to extract the midline.
+  - Depth-First Search (DFS) for finding the shortest path between points.
+- **Tracking**: 
+  - Object tracking using CSRT (Discriminative Correlation Filter with Channel and Spatial Reliability).
+- **Angle Calculation**: 
+  - Vector angle calculation to determine direction.
+- **Speed Adjustment**: 
+  - PID control for motor speed adjustment based on angle error.
 
-### 1. JetBot Setup
+## Installation
 
-1. **Code Deployment:**
-   - Download the JetBot code provided in the `.txt` file.
-   - Open Jupyter Notebook on your PC.
-   - Create a new notebook and copy the code from the `.txt` file into a code cell.
+1. **Install Dependencies**
 
-2. **Network Configuration:**
-   - Ensure that your JetBot and PC are connected to the same Wi-Fi network. This setup will allow seamless communication between the JetBot and your computer.
+   ```bash
+   pip install opencv-python numpy scikit-image opencv-contrib-python
+   ```
 
-### 2. Python Code Configuration
+## Usage
 
-1. **Update IP Address:**
-   - Locate the Python script provided in the repository.
-   - Open the script in a text editor.
-   - Find the section where the IP address of the JetBot is specified and replace it with your JetBot’s IP address.
+1. **Run the Script**
 
-2. **Camera Setup:**
-   - Connect an external camera to your computer.
-   - Ensure that the camera is properly configured and recognized by your system.
+   ```bash
+   python path_tracking.py
+   ```
 
-3. **Run the Script:**
-   - Execute the Python script in your environment.
-   - Follow the interactive prompts provided by the script to calibrate the system and start the navigation process.
+2. **Select Points**
 
-### Usage
+   - Click on the video frame to select start and end points for path detection.
+   - Select red and blue dots for tracking.
 
-1. **Start Analysis:**
-   - Run the Jupyter Notebook with the JetBot code to initiate the overhead camera analysis.
-   - The camera will capture images of the course and process them using OpenCV.
+3. **Tracking and Control**
 
-2. **Monitor Navigation:**
-   - The JetBot will begin following the planned path as determined by the overhead camera analysis.
-   - Monitor the JetBot’s progress and adjust parameters if necessary based on real-time feedback.
+   - The script will track objects, compute angles, and adjust motor speeds in real-time based on visual feedback.
+  
+4. **Files**
 
-### Troubleshooting
+The system consists of two main scripts:
 
-- **Connection Issues:** Ensure both the JetBot and PC are on the same network and check for any network-related issues.
-- **Camera Problems:** Verify that the external camera is properly connected and configured. Check camera drivers and connections if the camera is not recognized.
-- **Code Errors:** Double-check that the JetBot’s IP address is correctly updated in the Python script and ensure all required libraries are installed.
+    path_tracking.py:
+        Handles path detection, object tracking, and angle calculations.
+        Adjusts motor speed instructions based on visual feedback.
 
-## License
+    jetbot_control.py:
+        Reads motor speed instructions from a file and controls the JetBot accordingly.
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+## Functions
 
-## Acknowledgments
+- `extract_coordinates()`: Extracts coordinates of white pixels.
+- `create_line_matrix()`: Creates a matrix from line coordinates.
+- `find_and_draw_area()`: Finds and draws the path between points.
+- `thin_yellow_coordinates()`: Thins the yellow line for midline extraction.
+- `dfs()`: Finds the shortest path using depth-first search.
+- `calculate_angle()`: Computes the angle between vectors.
+- `adjust_motor_speeds()`: Adjusts motor speeds based on angle error.
 
-- OpenCV for computer vision tasks
-- Jupyter Notebook for interactive development
-- JetBot for autonomous robotics
+## Contributing
 
-For further information or support, please refer to the [Documentation](docs) or open an issue in the repository.
+Contributions are welcome. Submit pull requests or open issues to improve functionality.
 
----
-
-This detailed README provides a comprehensive guide for setting up and using the PathPilot project, including prerequisites, setup instructions, usage, and troubleshooting tips.
+This overview covers the main functionalities, algorithms used, installation steps, and basic usage instructions. Let me know if you need any more details or adjustments!
