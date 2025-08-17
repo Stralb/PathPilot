@@ -8,9 +8,9 @@ Witness the Jetbot in action! These videos showcase the system's ability to auto
 
 | Video | Description |
 |-------|-------------|
-| [Pathpilot Demo](../Videos/pathpilot2.mp4) | The Jetbot navigating the path and making real-time adjustments. |
-| [Object Tracking Demo](../Videos/pathpilot1.mp4) | Demonstration of the system tracking red and blue dots. |
-| [Full Course Demo](../Videos/pathpilot3.mp4) | The Jetbot successfully completing the course autonomously. |
+| [Pathpilot Demo](./Videos/pathpilot2.mp4) | The Jetbot navigating the path and making real-time adjustments. |
+| [Object Tracking Demo](./Videos/pathpilot.mp4) | Demonstration of the system tracking red and blue dots. |
+| [Full Course Demo](./Videos/pathpilot3.mp4) | The Jetbot successfully completing the course autonomously. |
 
 ## 💡 Overview
 
